@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" minBufferTime="PT1S" mediaPresentationDuration="PT3S" xmlns="urn:mpeg:dash:schema:mpd:2011">
+  <ProgramInformation moreInformationURL="www.castLabs.com"/>
+  <Period id="0" start="PT0S" duration="PT3S">
+    <AdaptationSet id="1" segmentAlignment="true" subsegmentAlignment="true" subsegmentStartsWithSAP="1" startWithSAP="1" bitstreamSwitching="true" mimeType="video/mp4" par="319:131" width="1276" height="524" frameRate="23976/1000" sar="1:1" minBandwidth="207300" maxBandwidth="867500">
+      <Role schemeIdUri="urn:mpeg:dash:role:2011" value="main"/>
+      <SegmentTemplate media="$RepresentationID$/media-$Time$.mp4" initialization="$RepresentationID$/init.mp4" timescale="11988">
+        <SegmentTimeline>
+          <S d="43000" t="1"/>
+        </SegmentTimeline>
+      </SegmentTemplate>
+      <Representation codecs="avc1.64001f" bandwidth="207300" id="vid_rep_1"/>
+      <Representation codecs="avc1.64001f" bandwidth="415000" id="vid_rep_2"/>
+      <Representation codecs="avc1.64001f" bandwidth="867500" id="vid_rep_3"/>
+    </AdaptationSet>
+  </Period>
+</MPD>

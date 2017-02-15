@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+  <title>7gen DASH Video Test</title>
+</head>
+<body>
+  <div class="content-wrapper">
+    <header class="header">
+      <h1 class="page-title">7gen DASH Video Test</h1>
+    </header>
+    <div class="main">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.0.5/shaka-player.compiled.js"></script>
+      <script src="assets/js/dash.js"></script>
+
+      <video id="video" autoplay loop></video>
+
+      <p><a href="https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP">More info</a></p>
+
+      <p><code>MPEG-4/H.264</code> seems to be the <a href="http://caniuse.com/#feat=mpeg4">best supported codec for use with DASH</a>.</p>
+
+      <pre>
+      # Create video file encoded at 250k 436p, H.264 codec:
+      ffmpeg -i assets/7gen.mp4 -an -b:v 250k -s:v 1276x524 -keyint_min 24 -g 72 -vcodec libx264 assets/vid_rep_1.mp4
+
+      # Create video file encoded at 500k 436p, H.264 codec:
+      ffmpeg -i assets/7gen.mp4 -an -b:v 500k -s:v 1276x524 -keyint_min 24 -g 72 -vcodec libx264 assets/vid_rep_2.mp4
+
+      #Create video file encoded at 1000k 436p, H.264 codec:
+      ffmpeg -i assets/7gen.mp4 -an -b:v 1000k -s:v 1276x524 -keyint_min 24 -g 72 -vcodec libx264 assets/vid_rep_3.mp4
+
+      # Create audio file encoded at 69k stereo, HE-AAC codec (7gen test file has no audio, so commented out):
+      # ffmpeg -i assets/7gen.mp4 -vn -ac 2 -acodec libfdk_aac -profile:a aac_he -ab 64k assets/sou_rep_1.mp4
+
+      # DASH-ify:
+      java -jar ~/src/dashencrypt/dash.fragmencrypter/target/dash.fragmencrypter-1.7.44-SNAPSHOT-exe.jar dash -x assets/vid_rep_1.mp4 assets/vid_rep_2.mp4 assets/vid_rep_3.mp4
+      </pre>
+
+    </div>
+    <footer class="footer">
+      <div class="copyright">Copyright 2017</div>
+    </footer>
+  </div>
+</body>
+</html>
+
+
