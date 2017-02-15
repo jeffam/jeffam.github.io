@@ -11,12 +11,26 @@
     </header>
     <div class="main">
 
+    <h2>~1 MB video file</h2>
+
     <video autoplay loop>
-      <source src="assets/7gen.mp4" type="video/webm">
+      <source src="assets/7gen.mp4" type="video/mp4">
       Your browser doesn't support HTML5 video tag.
     </video>
 
-      <p><code>MPEG-4/H.264</code> seems to be the <a href="http://caniuse.com/#feat=mpeg4">best supported codec for use in browsers that support the video element.</a>.</p>
+
+    <h2>~387 KB video file</h2>
+
+    <p>Encoded with
+      <code>ffmpeg -i assets/7gen.mp4 -an -b:v 1000k -s:v 1276x524 -keyint_min 24 -g 72 -vcodec libx264 assets/vid_rep_3.mp4</code>
+    </p>
+
+    <video autoplay loop>
+      <source src="assets/vid_rep_3.mp4" type="video/mp4">
+      Your browser doesn't support HTML5 video tag.
+    </video>
+
+    <p><code>MPEG-4/H.264</code> seems to be the <a href="http://caniuse.com/#feat=mpeg4">best supported codec for use in browsers that support the video element.</a>.</p>
 
     </div>
     <footer class="footer">
